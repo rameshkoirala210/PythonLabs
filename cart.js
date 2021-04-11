@@ -1,4 +1,3 @@
-
 let list;
 let listAdd;
 let itemCount;
@@ -50,17 +49,45 @@ function getCart($email) {
 }
 
 function deleteItem($id) {
-
-    //TODO complete implementation using the product id
-    alert("cart.js/deleteItem() is not implemented")
+    $.ajax({
+        type: 'DELETE',
+        url: Url+'Cart/'+$id,
+        dataType: 'json',
+        contentType: 'text/plain',
+        success: function (data) {
+            alert("Successfully DELETED to Cart")
+            getCart(email);
+        },
+        error: function(data) {
+            alert("FAILED TO DELETE")
+        }
+    })
+    //TODO: delete from the HTML
+    //alert("cart.js/deleteItem() is not implemented")
     
 }
 
 function checkOut() {
+    let email =$.trim($('#email').val());
+    $.ajax({
+        type: 'PUT',
+        url: Url+'Cart',
+        dataType: 'json',
+        data: JSON.stringify({
+            "email":email
+        }),
+        contentType: 'text/plain',
+        success: function (data) {
+            alert("Successfully CHECKED OUT")
+        },
+        error: function(data) {
+            alert("FAILED TO CHECKING OUT")
 
+        }
+    })
     //TODO complete implementation
-    alert("cart.js/checkOut() is not implemented")
+    //alert("cart.js/checkOut() is not implemented")
     
-    checkOut.apply;
+    //checkOut.apply;
 
 }

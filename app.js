@@ -169,18 +169,61 @@ function setComment($id) {
     //HINT
     //Take note of how the Ajax call in app.js/fetchComments() posts a GET request to corresponding API endpoint.
     //Look at the Microservice API Documentation and find out the appripriate type of request for this action.
-    let comment =$.trim($('#comment').val()); //gets the user's comment
+    let message =$.trim($('#message-text').val()); //gets the user's comment
+    let score = $.trim($('#score').val());
 
-        comment.setComment('comment', comment);
-        window.location.href = './index.html';
+
+    //alert(comment + score)
+    if( message !='') {
+    $.ajax({
+        type: 'POST',
+        url: Url+'SetComment',
+        dataType: 'json',
+        data: JSON.stringify({"product_id":$id,
+                "comment": message,
+                "score":score}),
+        contentType: 'text/plain',
+        success: function(data) {
+            alert("Comment Successfully Put")
+            //fetchOneProduct($id)
+        },
+        error: function (data) {
+            alert("error setting comment")
+        }
     
-
+    })
+    } else {
+        alert("Please enter the comment."); //alert user since email is empty
+    }
 }
 
 function addToCart($id) {
 
     //TODO complete implementation using the product id
-    alert("app.js/addToCart() not implemented")
+    let email =$.trim($('#email').val());
+    //alert(email)
+
+    if( email !='' ) {
+        $.ajax({
+            type: 'POST',
+            url: Url+'AddToCart',
+            dataType: 'json',
+            data: JSON.stringify({
+                "product_id":$id,
+                "email":email
+            }),
+            contentType: 'text/plain',
+            success: function (data) {
+                alert("Successfully Added to Cart")
+            },
+            error: function(data) {
+                alert("Failed to add to cart")
+            }
+        })
+    } else {
+        alert("Please enter your email at top of page."); //alert user since email is empty
+    }
+    
 }
 
 function toShoppingCart(){
