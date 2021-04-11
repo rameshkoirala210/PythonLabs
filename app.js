@@ -1,7 +1,7 @@
 const Url = "http://18.220.85.60/api/"; //this constant holds the base url for the Microservice API, you will append the API route to this value
 
 function fetchProductList() {
-
+    
     jsonObj = [];
     item = {};
     var productList;
