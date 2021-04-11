@@ -53,11 +53,14 @@ function deleteItem($id) {
 
     //TODO complete implementation using the product id
     alert("cart.js/deleteItem() is not implemented")
+    
 }
 
 function checkOut() {
 
     //TODO complete implementation
     alert("cart.js/checkOut() is not implemented")
+    
+    checkOut.apply;
 
 }

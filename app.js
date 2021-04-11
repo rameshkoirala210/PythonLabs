@@ -165,11 +165,15 @@ function fetchComments($id) {
 function setComment($id) {
 
     //TODO complete implementation using the product id
-    alert("app.js/setComment() not implemented")
-
+    //alert("app.js/setComment() not implemented")
     //HINT
     //Take note of how the Ajax call in app.js/fetchComments() posts a GET request to corresponding API endpoint.
     //Look at the Microservice API Documentation and find out the appripriate type of request for this action.
+    let comment =$.trim($('#comment').val()); //gets the user's comment
+
+        comment.setComment('comment', comment);
+        window.location.href = './index.html';
+    
 
 }
 
@@ -177,8 +181,6 @@ function addToCart($id) {
 
     //TODO complete implementation using the product id
     alert("app.js/addToCart() not implemented")
-
-
 }
 
 function toShoppingCart(){
